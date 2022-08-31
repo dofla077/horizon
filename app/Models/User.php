@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -20,7 +21,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use HasTeams;
     use Notifiable;
-    use TwoFactorAuthenticatable;
+    use TwoFactorAuthenticatable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
