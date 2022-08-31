@@ -21,6 +21,8 @@ return new class extends Migration
             $table->date('birthdate');
             $table->foreignIdFor(User::class)->constrained('users')->onDelete('cascade');
 
+            $table->unique(['user_id']);
+
             $table->timestamps();
             $table->softDeletes();
         });

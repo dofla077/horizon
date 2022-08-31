@@ -1,6 +1,7 @@
 <?php
 
-use App\Enums\GradeLevel;
+use App\Models\Activity;
+use App\Models\Manulex;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,13 +15,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('grades', function (Blueprint $table) {
+        Schema::create('manulexs_activities', function (Blueprint $table) {
             $table->id();
-            $table->enum('label', (array)GradeLevel::class);
-            $table->string('slug');
+
+            $table->tinyInteger('order')->nullable();
+            $table->foreignIdFor(Manulex::class)->constrained('manulexs')->onDelete('cascade');
+            $table->foreignIdFor(Activity::class)->constrained('activities')->onDelete('cascade');
+
 
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -31,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grades');
+        Schema::dropIfExists('manulexs_activities');
     }
 };

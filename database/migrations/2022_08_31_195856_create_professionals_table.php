@@ -17,14 +17,14 @@ return new class extends Migration
     {
         Schema::create('professionals', function (Blueprint $table) {
             $table->id();
-            $table->string('social_reason');
+            $table->string('social_reason')->nullable();
             $table->string('address');
             $table->bigInteger('phone');
 
             $table->foreignIdFor(User::class)->constrained('users')->onDelete('cascade');
             $table->foreignIdFor(ProfessionalType::class)->constrained('professional_types')->onDelete('cascade');
 
-
+            $table->unique(['user_id']);
 
             $table->timestamps();
             $table->softDeletes();
