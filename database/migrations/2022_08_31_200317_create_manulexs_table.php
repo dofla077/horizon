@@ -15,19 +15,19 @@ return new class extends Migration
     {
         Schema::create('manulexs', function (Blueprint $table) {
             $table->id();
-            $table->string('ortho');
-            $table->string('phon');
-            $table->string('synt');
-            $table->float('u');
-            $table->string('psyll');
-            $table->integer('nbsyll');
-            $table->string('gseg');
-            $table->string('pseg');
-            $table->string('gpmatch');
-            $table->tinyInteger('nblet');
-            $table->tinyInteger('nbphon');
-            $table->tinyInteger('nbgraoh');
-            $table->tinyInteger('puortho');
+            $table->string('ortho')->nullable();
+            $table->string('phon')->nullable();
+            $table->string('synt')->nullable();
+            $table->float('u')->nullable();
+            $table->string('psyll')->nullable();
+            $table->integer('nbsyll')->nullable();
+            $table->string('gseg')->nullable();
+            $table->string('pseg')->nullable();
+            $table->string('gpmatch')->nullable();
+            $table->tinyInteger('nblet')->nullable();
+            $table->tinyInteger('nbphon')->nullable();
+            $table->tinyInteger('nbgraph')->nullable();
+            $table->tinyInteger('puortho')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
-            $table->enum('label', (array)GradeLevel::class);
+            $table->enum('label', collect(GradeLevel::cases())->pluck('value')->all());
             $table->string('slug');
 
             $table->timestamps();

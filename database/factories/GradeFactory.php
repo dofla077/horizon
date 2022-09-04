@@ -20,8 +20,8 @@ class GradeFactory extends Factory
         $level = collect(GradeLevel::cases())->random();
 
         return [
-            'label' => $level,
-            'slug' => $level,
+            'label' => $level->value,
+            'slug' => str($level->value)->slug(),
         ];
     }
 }
